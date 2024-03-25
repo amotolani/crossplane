@@ -34,3 +34,11 @@ spec:
     - type: ToCompositeFieldPath
       fromFieldPath: metadata.annotations[cool-field]
       toFieldPath: status.coolerField
+    - type: FromCompositeFieldPath
+      fromFieldPath: metadata.name
+      toFieldPath: metadata.generateName
+      transforms:
+        - type: string
+          string:
+            fmt: "some-prefix-%s-"
+            type: Format
